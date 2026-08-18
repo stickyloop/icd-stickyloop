@@ -1,0 +1,80 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  icon?: string;
+}
+
+const { name, url, icon } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="social-link"
+>
+  {icon && <span class="icon">{icon}</span>}
+
+  <span>{name}</span>
+
+  <span class="arrow">→</span>
+</a>
+
+<style>
+  .social-link {
+    width: 100%;
+    max-width: 500px;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    padding: 0 20px;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .social-link:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .icon {
+    position: absolute;
+    left: 18px;
+    font-size: 22px;
+  }
+
+  .arrow {
+    position: absolute;
+    right: 18px;
+
+    font-size: 20px;
+
+    transition: transform 0.2s ease;
+  }
+
+  .social-link:hover .arrow {
+    transform: translateX(4px);
+  }
+</style>

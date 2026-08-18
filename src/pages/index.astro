@@ -1,0 +1,258 @@
+---
+import Layout from "../layouts/LayoutSocial.astro";
+import SocialLink from "../components/SocialLink.astro";
+
+const company = {
+  name: "ICE CREAM DEALER AGS",
+  username: "@icecreamdealerags",
+  description:
+    "Bienvenid@ al portal de seguimiento 😃",
+  logo: "/Logo1.jpg",
+};
+
+const socialLinks = [
+  {
+    name: "Instagram",
+    url: "#",
+    icon: "📷",
+  },
+  {
+    name: "Facebook",
+    url: "#",
+    icon: "f",
+  },
+  {
+    name: "TikTok",
+    url: "#",
+    icon: "♪",
+  },
+  {
+    name: "WhatsApp",
+    url: "#",
+    icon: "☏",
+  },
+  {
+    name: "Sitio web",
+    url: "https://www.miempresa.com",
+    icon: "🌐",
+  },
+];
+---
+
+<Layout
+  title={company.name}
+  description={company.description}
+>
+  <main class="page">
+    <section class="profile">
+
+	<div class="coupon-banner">
+    <div class="coupon-icon">🎁</div>
+
+    <div class="coupon-content">
+      <strong>¿Quieres canjear tu cupón?</strong>
+      <span>
+        En base a las condiciones de tu cupón selecciona una de las redes sociales
+      </span>
+    </div>
+  </div>
+
+ 
+  
+      <img
+        class="logo"
+        src={company.logo}
+        alt={`Logo de ${company.name}`}
+      />
+
+      <h1>{company.name}</h1>
+
+      <p class="username">
+        {company.username}
+      </p>
+
+      <p class="description">
+        {company.description}
+      </p>
+
+      <div class="links">
+        {
+          socialLinks.map((link) => (
+            <SocialLink
+              name={link.name}
+              url={link.url}
+              icon={link.icon}
+            />
+          ))
+        }
+      </div>
+
+      <footer>
+        <p>© {new Date().getFullYear()} {company.name}</p>
+      </footer>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    background:
+      radial-gradient(
+        circle at top,
+        #fceadb 0%,
+        #ffffff 70%,
+        #d0aa6e 100%
+      );
+  }
+
+  .profile {
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .logo {
+    width: 110px;
+    height: 110px;
+
+    border-radius: 30%;
+
+    object-fit: cover;
+
+    border: 4px solid #ffffff;
+
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.12);
+
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    margin: 0;
+
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .username {
+    margin: 8px 0 0;
+
+    color: #71717a;
+
+    font-size: 15px;
+  }
+
+  .description {
+    max-width: 450px;
+
+    margin: 16px 0 28px;
+
+    color: #52525b;
+
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .links {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 14px;
+  }
+
+  footer {
+    margin-top: 35px;
+
+    color: #71717a;
+
+    font-size: 13px;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .page {
+      padding: 30px 16px;
+    }
+
+    .logo {
+      width: 95px;
+      height: 95px;
+    }
+
+    h1 {
+      font-size: 25px;
+    }
+
+    .description {
+      margin-bottom: 24px;
+    }
+  }
+
+  .coupon-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 28px;
+  padding: 16px 18px;
+
+  background: #111827;
+  color: white;
+
+  border-radius: 16px;
+
+  text-align: left;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.coupon-icon {
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+  border-radius: 12px;
+
+  font-size: 22px;
+}
+
+.coupon-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coupon-content strong {
+  font-size: 15px;
+}
+
+.coupon-content span {
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+</style>
